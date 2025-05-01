@@ -1,0 +1,11 @@
+services:
+  alpine-latest:
+    build:
+      context: environments/alpine-latest
+    cap_add:
+      - SYS_ADMIN
+
+networks:
+  default:
+    name: development
+    external: true

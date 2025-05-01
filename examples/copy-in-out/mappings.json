@@ -1,0 +1,14 @@
+{
+  "inputs": [
+    {
+      "from": "example.txt",
+      "to": "/box/example.txt"
+    }
+  ],
+  "outputs": [
+    {
+      "from": "/box/lsla.txt",
+      "to": "lsla.txt"
+    }
+  ]
+}
