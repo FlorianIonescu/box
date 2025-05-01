@@ -14,7 +14,18 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 if [ -z "$environment" ] || [ -z "$command" ]; then
-    echo "Usage: $0 -e|--environment <environment> -c|--command <command> -m|--mappings <mappings?>"
+    echo "box"
+    echo "---"
+    echo ""
+    echo "run one-off commands in docker containers, away from the rest of your system"
+    echo ""
+    echo "required arguments:"
+    echo "  -e|--environment <environment>"
+    echo "  -c|--command <command>"
+    echo ""
+    echo "optional arguments:"
+    echo "  -m|--mappings <mappings>"
+    echo "  -q|--quiet"
     exit 1
 fi
 ### ARGS
@@ -52,7 +63,6 @@ log ""
 
 
 run_command docker compose -p $project up $environment -d
-CONTAINER=$(docker ps -alq)
 
 
 log ""
@@ -77,7 +87,7 @@ log "-----------------------------------------------"
 log ""
 
 
-docker exec -it $CONTAINER sh -c "$command"
+docker compose -p $project exec -it $environment sh -c "$command"
 
 
 log ""
